@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Social Preview · 1280×640</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
+  body {
+    font-family: system-ui, "Noto Sans SC", "Source Han Sans SC", "Helvetica Neue", Arial, sans-serif;
+    background: #171918;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card {
+    width: 1280px; height: 640px;
+    display: grid;
+    grid-template-columns: 660px 1fr;
+    grid-template-rows: 1fr;
+    gap: 48px;
+    padding: 64px;
+    position: relative;
+    background:
+      radial-gradient(700px 400px at 12% 0%, rgba(20,125,137,.20), transparent 70%),
+      radial-gradient(600px 400px at 95% 100%, rgba(108,65,230,.16), transparent 70%),
+      #171918;
+  }
+
+  /* ---------- 左栏 ---------- */
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: #42a288;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-size: 70px;
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+  }
+
+  .sub {
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(255,255,255,.62);
+    max-width: 500px;
+    margin-bottom: 36px;
+  }
+
+  .cmd {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 15px;
+    color: #7ee0b0;
+    background: rgba(66,162,136,.10);
+    border: 1px solid rgba(66,162,136,.28);
+    border-radius: 10px;
+    padding: 12px 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .url {
+    margin-top: 18px;
+    font-size: 14px;
+    color: rgba(255,255,255,.38);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- 右栏 Bento ---------- */
+  .right { min-height: 0; }
+
+  .bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0,1.55fr) minmax(0,1fr) minmax(0,1fr);
+    gap: 12px;
+    height: 100%;
+  }
+
+  .b {
+    min-height: 0;
+    background: #000;
+    border-radius: 24px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .b-hero { grid-column: span 2; }
+
+  .b-kicker {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,.42);
+    margin-bottom: 14px;
+  }
+
+  .swatches { display: flex; gap: 6px; }
+  .sw { height: 42px; border-radius: 8px; flex: 1; }
+  .sw.accent { flex: 0 0 34px; }
+
+  .b-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .num {
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .num small { font-size: 15px; font-weight: 400; color: rgba(255,255,255,.5); margin-left: 4px; }
+
+  .cap {
+    font-size: 12px;
+    color: rgba(255,255,255,.45);
+    line-height: 1.4;
+  }
+
+  /* 柱状图 */
+  .bars { display: flex; align-items: flex-end; gap: 7px; height: 54px; }
+  .bar { flex: 1; background: linear-gradient(180deg,#3d8bff,#1b4fd8); border-radius: 4px 4px 0 0; }
+
+  /* 渐变卡 */
+  .b-grad {
+    background: linear-gradient(145deg,#eca9ff,#bf67ff 45%,#a2daff);
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .b-grad .num { color: #14101c; }
+  .b-grad .cap { color: rgba(20,16,28,.68); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="left">
+    <div class="eyebrow">AGENT SKILL</div>
+    <h1>Apple<br>Design Language</h1>
+    <p class="sub">Layout rules, typography, color system and copy tone — packaged as a reusable skill for any AI coding agent.</p>
+    <div class="cmd">./install/install.sh --target claude</div>
+    <div class="url">github.com/MokoKing666/apple-marketing-design</div>
+  </div>
+
+  <div class="right">
+    <div class="bento">
+
+      <div class="b b-hero">
+        <div>
+          <div class="b-kicker">PALETTE · 9 NEUTRAL / 5 ACCENT</div>
+          <div class="swatches">
+            <div class="sw" style="background:#ffffff"></div>
+            <div class="sw" style="background:#f5f5f7"></div>
+            <div class="sw" style="background:#d2d2d7"></div>
+            <div class="sw" style="background:#86868b"></div>
+            <div class="sw" style="background:#6c6b6f"></div>
+            <div class="sw" style="background:#1d1d1f"></div>
+            <div class="sw" style="background:#171918"></div>
+            <div class="sw accent" style="background:#147d89"></div>
+            <div class="sw accent" style="background:#db404d"></div>
+            <div class="sw accent" style="background:#42a288"></div>
+            <div class="sw accent" style="background:#0031ea"></div>
+            <div class="sw accent" style="background:#6c41e6"></div>
+          </div>
+        </div>
+        <div>
+          <div class="b-title">Beyond black and white.</div>
+          <div class="cap" style="margin-top:6px">Only four background classes. Color is 5% of the page.</div>
+        </div>
+      </div>
+
+      <div class="b">
+        <div class="b-kicker">WHITESPACE</div>
+        <div class="num">53<small>%</small></div>
+        <div class="cap">Image 40% · Text 7%</div>
+      </div>
+
+      <div class="b">
+        <div class="b-kicker">RADIUS</div>
+        <div class="num">18<small>%</small></div>
+        <div class="cap">of the short edge</div>
+      </div>
+
+      <div class="b">
+        <div class="b-kicker">4PT SCALE</div>
+        <div class="bars">
+          <div class="bar" style="height:24%"></div>
+          <div class="bar" style="height:38%"></div>
+          <div class="bar" style="height:52%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:88%"></div>
+          <div class="bar" style="height:100%"></div>
+        </div>
+        <div class="cap">16 / 24 / 32 / 40</div>
+      </div>
+
+      <div class="b b-grad">
+        <div class="num" style="font-size:38px">1.8<small style="color:rgba(20,16,28,.6)">×</small></div>
+        <div class="cap">line-height for body</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
