@@ -15,7 +15,7 @@
   body {
     font-family: "SF Pro Display", "SF Pro Text", -apple-system,
                  "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-    background: #171918;
+    background: #000000;
     color: #f5f5f7;
     -webkit-font-smoothing: antialiased;
   }
@@ -24,6 +24,19 @@
     position: relative;
     width: 1280px; height: 640px;
     overflow: hidden;
+  }
+
+  /* 双色光晕：紫在右上、蓝在右下，同一色相家族，不引入第二种强调色 */
+  .glow-a {
+    position: absolute;
+    left: 520px; top: -300px;
+    width: 1060px; height: 1100px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(108,65,230,.30) 0%,
+      rgba(108,65,230,.11) 38%,
+      rgba(108,65,230,0) 72%);
+    pointer-events: none;
   }
 
   /* 安全区：左右 88（6.9%），上下 152 —— 3:1 裁切后仍留 41px 呼吸 */
@@ -48,7 +61,7 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.28em;
-    color: #42a288;
+    color: rgba(245,245,247,.38);
     margin-bottom: 16px;
   }
 
@@ -98,6 +111,7 @@
     border-radius: 60px;          /* 短边 340 × 18% ≈ 61 */
     background: #f5f5f7;
     padding: 44px;
+    box-shadow: 0 40px 110px rgba(108,65,230,.34), 0 0 0 1px rgba(255,255,255,.06);
     display: grid;
     grid-template-rows: auto 1fr auto;
     overflow: hidden;
@@ -138,6 +152,7 @@
 </head>
 <body>
 <div class="card">
+  <div class="glow-a"></div>
   <div class="safe">
 
     <div class="left">
