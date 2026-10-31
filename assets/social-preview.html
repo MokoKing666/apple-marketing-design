@@ -6,8 +6,14 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1280px; height: 640px; overflow: hidden; }
+
+  :root {
+    --font: "SF Pro Display", "SF Pro Text", -apple-system,
+            "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  }
+
   body {
-    font-family: system-ui, "Noto Sans SC", "Source Han Sans SC", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font);
     background: #171918;
     color: #fff;
     -webkit-font-smoothing: antialiased;
@@ -16,60 +22,60 @@
   .card {
     width: 1280px; height: 640px;
     display: grid;
-    grid-template-columns: 660px 1fr;
+    grid-template-columns: 664px 1fr;
     grid-template-rows: 1fr;
     gap: 48px;
     padding: 64px;
     position: relative;
     background:
-      radial-gradient(700px 400px at 12% 0%, rgba(20,125,137,.20), transparent 70%),
-      radial-gradient(600px 400px at 95% 100%, rgba(108,65,230,.16), transparent 70%),
+      radial-gradient(720px 420px at 10% -5%, rgba(20,125,137,.22), transparent 70%),
+      radial-gradient(620px 420px at 96% 104%, rgba(108,65,230,.18), transparent 70%),
       #171918;
   }
 
   /* ---------- 左栏 ---------- */
   .eyebrow {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     color: #42a288;
-    margin-bottom: 28px;
+    margin-bottom: 26px;
   }
 
   h1 {
-    font-size: 70px;
+    font-size: 78px;
     font-weight: 600;
-    line-height: 1.06;
-    letter-spacing: -0.035em;
-    margin-bottom: 28px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 26px;
   }
+
+  h1 .en { letter-spacing: -0.035em; }
 
   .sub {
     font-size: 19px;
     font-weight: 300;
-    line-height: 1.55;
-    color: rgba(255,255,255,.62);
-    max-width: 500px;
-    margin-bottom: 36px;
+    line-height: 1.75;
+    color: rgba(255,255,255,.64);
+    max-width: 520px;
+    margin-bottom: 34px;
   }
 
   .cmd {
     display: inline-block;
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-family: "SF Mono", ui-monospace, Consolas, monospace;
     font-size: 15px;
     color: #7ee0b0;
     background: rgba(66,162,136,.10);
     border: 1px solid rgba(66,162,136,.28);
     border-radius: 10px;
     padding: 12px 18px;
-    letter-spacing: -0.01em;
   }
 
   .url {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: 14px;
-    color: rgba(255,255,255,.38);
-    letter-spacing: 0.01em;
+    color: rgba(255,255,255,.36);
   }
 
   /* ---------- 右栏 Bento ---------- */
@@ -78,7 +84,7 @@
   .bento {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(0,1.55fr) minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows: minmax(0,1.48fr) minmax(0,1fr) minmax(0,1.08fr);
     gap: 12px;
     height: 100%;
   }
@@ -98,10 +104,11 @@
   .b-hero { grid-column: span 2; }
 
   .b-kicker {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,.42);
-    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,.44);
+    margin-bottom: 12px;
   }
 
   .swatches { display: flex; gap: 6px; }
@@ -109,38 +116,46 @@
   .sw.accent { flex: 0 0 34px; }
 
   .b-title {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
   }
 
   .num {
     font-size: 42px;
     font-weight: 600;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
     line-height: 1;
+    font-feature-settings: "tnum";
   }
-  .num small { font-size: 15px; font-weight: 400; color: rgba(255,255,255,.5); margin-left: 4px; }
+  .num small {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,.5);
+    margin-left: 4px;
+    letter-spacing: 0;
+  }
 
   .cap {
     font-size: 12px;
-    color: rgba(255,255,255,.45);
-    line-height: 1.4;
+    font-weight: 300;
+    color: rgba(255,255,255,.46);
+    line-height: 1.5;
   }
 
   /* 柱状图 */
-  .bars { display: flex; align-items: flex-end; gap: 7px; height: 54px; }
+  .bars { display: flex; align-items: flex-end; gap: 7px; height: 38px; margin-bottom: 6px; }
   .bar { flex: 1; background: linear-gradient(180deg,#3d8bff,#1b4fd8); border-radius: 4px 4px 0 0; }
 
   /* 渐变卡 */
   .b-grad {
     background: linear-gradient(145deg,#eca9ff,#bf67ff 45%,#a2daff);
     justify-content: center;
-    align-items: flex-start;
+    gap: 6px;
   }
   .b-grad .num { color: #14101c; }
-  .b-grad .cap { color: rgba(20,16,28,.68); font-weight: 500; }
+  .b-grad .cap { color: rgba(20,16,28,.7); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -148,8 +163,8 @@
 
   <div class="left">
     <div class="eyebrow">AGENT SKILL</div>
-    <h1>Apple<br>Design Language</h1>
-    <p class="sub">Layout rules, typography, color system and copy tone — packaged as a reusable skill for any AI coding agent.</p>
+    <h1><span class="en">Apple</span><br>设计语言</h1>
+    <p class="sub">版式规则、字体层级、色彩系统、文案语气，<br>打包成一套可复用的 AI 技能。</p>
     <div class="cmd">./install/install.sh --target claude</div>
     <div class="url">github.com/MokoKing666/apple-marketing-design</div>
   </div>
@@ -159,7 +174,7 @@
 
       <div class="b b-hero">
         <div>
-          <div class="b-kicker">PALETTE · 9 NEUTRAL / 5 ACCENT</div>
+          <div class="b-kicker">色板 · 9 中性色 / 5 强调色</div>
           <div class="swatches">
             <div class="sw" style="background:#ffffff"></div>
             <div class="sw" style="background:#f5f5f7"></div>
@@ -176,25 +191,25 @@
           </div>
         </div>
         <div>
-          <div class="b-title">Beyond black and white.</div>
-          <div class="cap" style="margin-top:6px">Only four background classes. Color is 5% of the page.</div>
+          <div class="b-title">不止黑白。</div>
+          <div class="cap" style="margin-top:6px">只有四种底色，色彩只占版面的 5%。</div>
         </div>
       </div>
 
       <div class="b">
-        <div class="b-kicker">WHITESPACE</div>
+        <div class="b-kicker">留白</div>
         <div class="num">53<small>%</small></div>
-        <div class="cap">Image 40% · Text 7%</div>
+        <div class="cap">图 40% · 字 7%</div>
       </div>
 
       <div class="b">
-        <div class="b-kicker">RADIUS</div>
+        <div class="b-kicker">圆角</div>
         <div class="num">18<small>%</small></div>
-        <div class="cap">of the short edge</div>
+        <div class="cap">按短边计算</div>
       </div>
 
       <div class="b">
-        <div class="b-kicker">4PT SCALE</div>
+        <div class="b-kicker">栅格</div>
         <div class="bars">
           <div class="bar" style="height:24%"></div>
           <div class="bar" style="height:38%"></div>
@@ -203,12 +218,12 @@
           <div class="bar" style="height:88%"></div>
           <div class="bar" style="height:100%"></div>
         </div>
-        <div class="cap">16 / 24 / 32 / 40</div>
+        <div class="cap">4 的倍数 · 16 / 24 / 32 / 40</div>
       </div>
 
       <div class="b b-grad">
         <div class="num" style="font-size:38px">1.8<small style="color:rgba(20,16,28,.6)">×</small></div>
-        <div class="cap">line-height for body</div>
+        <div class="cap">正文行距</div>
       </div>
 
     </div>
