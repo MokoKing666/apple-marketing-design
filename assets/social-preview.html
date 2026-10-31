@@ -10,7 +10,7 @@
   body {
     font-family: "SF Pro Display", "SF Pro Text", -apple-system,
                  "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-    background: #000;
+    background: #171918;
     color: #f5f5f7;
     -webkit-font-smoothing: antialiased;
   }
@@ -21,23 +21,23 @@
     overflow: hidden;
   }
 
-  /* 唯一的光：极淡，只给背景一点层次 */
-  .glow {
-    position: absolute;
-    right: -220px; top: -260px;
-    width: 900px; height: 760px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(138,154,255,.16) 0%, rgba(138,154,255,0) 66%);
-  }
-
-  /* 安全区：x 100–1180，y 90–550 */
+  /* 安全区：左右 90（7%），上下 110 —— 3:1 裁切后仍完整 */
   .safe {
     position: absolute;
-    left: 100px; top: 90px;
-    width: 1080px; height: 460px;
+    left: 90px; top: 110px;
+    width: 1100px; height: 420px;
+    display: grid;
+    grid-template-columns: 604px 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  /* ---------- 左：文字 ---------- */
+  .left {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: 16px;
   }
 
   .eyebrow {
@@ -45,38 +45,30 @@
     font-weight: 600;
     letter-spacing: 0.28em;
     color: #42a288;
-    margin-bottom: 26px;
+    margin-bottom: 24px;
   }
 
   h1 {
-    font-size: 108px;
+    font-size: 92px;
     font-weight: 600;
-    line-height: 1.02;
-    letter-spacing: -0.012em;
-    margin-bottom: 26px;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
   }
   h1 .en {
     display: block;
     letter-spacing: -0.042em;
   }
   h1 .zh {
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
   }
 
   .sub {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 1.75;
-    color: rgba(245,245,247,.58);
-    margin-bottom: 36px;
-  }
-
-  .rule {
-    width: 150px;
-    height: 2px;
-    border-radius: 1px;
-    background: linear-gradient(90deg, #8a9aff, #a2daff);
-    margin-bottom: 26px;
+    color: rgba(245,245,247,.62);
+    margin-bottom: 32px;
   }
 
   .cmd {
@@ -88,28 +80,77 @@
     background: rgba(66,162,136,.07);
     border: 1px solid rgba(66,162,136,.20);
     border-radius: 9px;
-    padding: 10px 16px;
+    padding: 12px 16px;
     margin-bottom: 12px;
   }
 
   .url {
     font-size: 13px;
-    color: rgba(245,245,247,.30);
-    letter-spacing: 0.01em;
+    color: rgba(245,245,247,.28);
+  }
+
+  /* ---------- 右：渐变产品卡 ---------- */
+  .art {
+    border-radius: 76px;          /* 短边 420 × 18% */
+    background: #f5f5f7;
+    padding: 52px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .art-kicker {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #6c6b6f;
+    position: relative;
+  }
+
+  .art-title {
+    font-size: 68px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    color: #1d1d1f;
+    align-self: center;
+    position: relative;
+  }
+
+  /* 半边上色：只染前两字 */
+  .art-title .grad {
+    color: #6c41e6;
+  }
+
+  .art-note {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #6c6b6f;
+    position: relative;
+    max-width: 22em;
   }
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="glow"></div>
-
   <div class="safe">
-    <div class="eyebrow">AGENT SKILL</div>
-    <h1><span class="en">Apple</span><span class="zh">设计语言</span></h1>
-    <p class="sub">版式、字体、色彩、文案，一套可以照着做的规范。</p>
-    <div class="rule"></div>
-    <div class="cmd">./install/install.sh --target claude</div>
-    <div class="url">github.com/MokoKing666/apple-marketing-design</div>
+
+    <div class="left">
+      <div class="eyebrow">AGENT SKILL</div>
+      <h1><span class="en">Apple</span><span class="zh">设计语言</span></h1>
+      <p class="sub">版式、字体、色彩、文案，<br>一套可以照着做的规范。</p>
+      <div class="cmd">./install/install.sh --target claude</div>
+      <div class="url">github.com/MokoKing666/apple-marketing-design</div>
+    </div>
+
+    <div class="art">
+      <div class="art-kicker">色板 · 9 中性色 / 5 强调色</div>
+      <div class="art-title"><span class="grad">不止</span>黑白。</div>
+      <div class="art-note">四种底色，色彩只占版面的 5%。</div>
+    </div>
+
   </div>
 </div>
 </body>
