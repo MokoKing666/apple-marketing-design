@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Social Preview · 1280×640</title>
+<!--
+  裁切实测：GitHub 列表卡片按 3.03:1 显示（400×132），
+  1280×640 按此比例裁切，可视区 y = 109 ~ 531，上下各裁 109px。
+  因此内容全部收在 y 152 ~ 492 之间，任何位置都有 ≥40px 呼吸。
+-->
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1280px; height: 640px; overflow: hidden; }
@@ -21,15 +26,14 @@
     overflow: hidden;
   }
 
-  /* 安全区：左右 90（7%），上下 110 —— 3:1 裁切后仍完整 */
+  /* 安全区：左右 88（6.9%），上下 152 —— 3:1 裁切后仍留 41px 呼吸 */
   .safe {
     position: absolute;
-    left: 90px; top: 110px;
-    width: 1100px; height: 420px;
+    left: 88px; top: 152px;
+    width: 1104px; height: 340px;
     display: grid;
     grid-template-columns: 604px 1fr;
     gap: 16px;
-    align-items: stretch;
   }
 
   /* ---------- 左：文字 ---------- */
@@ -45,15 +49,15 @@
     font-weight: 600;
     letter-spacing: 0.28em;
     color: #42a288;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   h1 {
-    font-size: 92px;
+    font-size: 72px;
     font-weight: 600;
-    line-height: 1.04;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
+    line-height: 1.05;
+    letter-spacing: -0.008em;
+    margin-bottom: 20px;
   }
   h1 .en {
     display: block;
@@ -64,72 +68,71 @@
   }
 
   .sub {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 300;
-    line-height: 1.75;
+    line-height: 1.6;
     color: rgba(245,245,247,.62);
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
 
   .cmd {
     display: inline-block;
     align-self: flex-start;
     font-family: "SF Mono", ui-monospace, Consolas, monospace;
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(126,224,176,.9);
     background: rgba(66,162,136,.07);
     border: 1px solid rgba(66,162,136,.20);
-    border-radius: 9px;
-    padding: 12px 16px;
-    margin-bottom: 12px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-bottom: 8px;
   }
 
   .url {
-    font-size: 13px;
-    color: rgba(245,245,247,.28);
+    font-size: 12px;
+    color: rgba(245,245,247,.30);
   }
 
-  /* ---------- 右：渐变产品卡 ---------- */
+  /* ---------- 右：白卡 ---------- */
   .art {
-    border-radius: 76px;          /* 短边 420 × 18% */
+    border-radius: 60px;          /* 短边 340 × 18% ≈ 61 */
     background: #f5f5f7;
-    padding: 52px;
+    padding: 44px;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    position: relative;
     overflow: hidden;
   }
 
   .art-kicker {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     color: #6c6b6f;
-    position: relative;
   }
 
   .art-title {
-    font-size: 68px;
+    font-size: 62px;
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -0.035em;
     color: #1d1d1f;
     align-self: center;
-    position: relative;
   }
 
-  /* 半边上色：只染前两字 */
+  /* 半边上色：只染前半句，用规范色板内的紫→蓝渐变 */
   .art-title .grad {
-    color: #6c41e6;
+    background: linear-gradient(96deg, #6c41e6 0%, #0031ea 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .art-note {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #6c6b6f;
-    position: relative;
-    max-width: 22em;
   }
 </style>
 </head>
